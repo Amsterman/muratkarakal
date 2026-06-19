@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murat Karakal | Pazarlama Profesyoneli & Stratejist</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome (İkonlar için) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #070b14;
+            --bg-card: #0f172a;
+            --primary: #d4af37; /* Altın Sarı */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient-hero: linear-gradient(135deg, #090d16 0%, #070b14 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Sabit Üst Menü / Navigasyon */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(7, 11, 20, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.1rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: none; 
+            list-style: none;
+            gap: 2rem;
+        }
+
+        /* Altın Sarısı Menü Linkleri */
+        .nav-links a {
+            color: var(--primary) !important;
+            text-decoration: none !important;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main) !important; 
+        }
+
+        /* Hero (Giriş) Alanı - Hazır Binalar Kaldırıldı, Premium Radyal Işık ve İstanbul Görsel Altyapısı Eklendi */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 1.2rem 4rem 1.2rem;
+            /* Yapay zekada üreteceğin İstanbul arkaplanını depona 'istanbul-skyline.jpg' adıyla atarsan otomatik çeker. Yüklenene kadar asil bir koyu ton görünür. */
+            background: linear-gradient(to bottom, rgba(7, 11, 20, 0.88), rgba(7, 11, 20, 0.98)), 
+                        url('istanbul-skyline.jpg'),
+                        var(--gradient-hero);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        /* Profil Fotoğrafı Çerçevesi */
+        .hero-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem auto;
+            border: 3px solid var(--primary);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+            display: block;
+        }
+
+        .hero-subtitle {
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-title {
+            font-size: 2.15rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-description {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Genel Bölüm Düzenleri */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.2rem;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 35px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        /* Hakkımda Bölümü */
+        .about-box {
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .site-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-text {
+            padding: 1.8rem 1.2rem;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 1.2rem;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Rakamlarla Sonuçlar Bölümü */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #0f172a 0%, #090d16 100%);
+            padding: 1.5rem 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Uzmanlık Alanları */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            width: 100%;
+        }
+
+        .skill-card {
+            background-color: var(--bg-card);
+            padding: 2rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .skill-icon {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.6rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .skill-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        /* İş Deneyimi Üstü Grafik Bölümü */
+        .section-divider-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* İş Deneyimi Zaman Tüneli */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+            width: 100%;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            top: 5px;
+            bottom: 5px;
+            left: 5px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            left: -19px;
+            background-color: var(--primary);
+            border: 2px solid var(--bg-dark);
+            top: 1.5rem;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            padding: 1.5rem 1.2rem;
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .time-period {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            letter-spacing: 1px;
+        }
+
+        .job-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .company {
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .job-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        /* İletişim Alanı */
+        .contact-container {
+            text-align: center;
+            width: 100%;
+        }
+
+        .contact-text {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .social-icon {
+            background: var(--bg-card);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            font-weight: 500;
+            gap: 0.5rem;
+        }
+
+        .social-icon i {
+            font-size: 1.5rem;
+        }
+
+        .social-icon.linkedin i { color: #0a66c2; }
+        .social-icon.whatsapp i { color: #25d366; }
+        .social-icon.phone i { color: #3b82f6; }
+        .social-icon.email i { color: #ea4335; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: #04070d;
+            width: 100%;
+        }
+
+        /* Masaüstü Ekranlar İçin Optimizasyon */
+        @media (min-width: 769px) {
+            .hero-title { font-size: 3.2rem; }
+            .nav-links { display: flex; list-style: none; gap: 2rem; }
+            .cta-buttons { flex-direction: row; max-width: none; justify-content: center; }
+            .skills-grid { grid-template-columns: repeat(3, 1fr); }
+            .social-links { grid-template-columns: repeat(4, 1fr); max-width: none; }
+            .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+            .about-box { padding: 0; display: flex; align-items: stretch; }
+            .site-image { width: 45%; height: auto; border-bottom: none; border-right: 1px solid rgba(255, 255, 255, 0.05); }
+            .about-text { padding: 3rem; width: 55%; }
+            .section-divider-image { height: 280px; }
+            .hero-avatar { width: 180px; height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Üst Menü -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">MURAT<span>KARAKAL</span></a>
+            <ul class="nav-links">
+                <li><a href="#basarilar">Sonuçlar</a></li>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#yetenekler">Uzmanlıklar</a></li>
+                <li><a href="#deneyim">Deneyim</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Giriş Bölümü -->
+    <header class="hero">
+        <div class="hero-content">
+            <img src="murat-jpeg.jpeg" alt="Murat Karakal" class="hero-avatar">
+            
+            <p class="hero-subtitle">Pazarlama Yönetimi & Strateji</p>
+            <h1 class="hero-title">Büyümeyi Sağlayan Stratejiler, Değer Yaratan Çözümler</h1>
+            <p class="hero-description">Markaların dijital ve kurumsal dönüşüm yolculuklarına yön veriyor, veri odaklı yaklaşımlarla sürdürülebilir ticari başarılar inşa ediyorum.</p>
+            <div class="cta-buttons">
+                <a href="#iletisim" class="btn btn-primary">İletişime Geç</a>
+                <a href="#deneyim" class="btn btn-secondary">Deneyimleri İncele</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Rakamlarla Sonuçlar / Başarılar Bölümü -->
+    <section id="basarilar">
+        <h2 class="section-title">Rakamlarla Sonuçlar</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Yıl Deneyim</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Yönetilen Kampanya</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">%35</span>
+                <span class="stat-label">Ortalama Büyüme</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Marka Projesi</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hakkımda Bölümü -->
+    <section id="hakkimda">
+        <h2 class="section-title">Hakkımda</h2>
+        <div class="about-box">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop" alt="Stratejik Planlama" class="site-image">
+            <div class="about-text">
+                <p>Pazarlama ve satış dünyasında edindiğim köklü deneyimle, markaların potansiyellerini en üst seviyeye çıkarmaya odaklanıyorum. Pazar dinamiklerini, tüketici eğilimlerini ve yeni nesil dijital trendleri analiz ederek şirket hedefleriyle örtüşen, ölçülebilir büyüme haritaları kurguluyorum.</p>
+                <p>Kreatif bakış açısını analitik disiplinle birleştirerek, marka bilinirliğinin artırılması, çok kanallı pazarlama süreçlerinin yönetilmesi ve pazarda kalıcı bir yer edinilmesi süreçlerinde stratejik sorumluluklar üstleniyorum.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uzmanlık Alanları Bölümü -->
+    <section id="yetenekler">
+        <h2 class="section-title">Uzmanlık Alanları</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>Stratejik Pazarlama</h3>
+                <p>Doğru hedef kitle analizi, marka konumlandırma ve pazarda uzun vadeli sürdürülebilir büyüme kurguları.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Satış ve Performans</h3>
+                <p>Pazarlama operasyonlarının ticari çıktılara dönüştürülmesi ve bütçe optimizasyonu yönetimi.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fa-solid fa-people-group"></i></div>
+                <h3>Marka Dönüşümü</h3>
+                <p>Kurumsal kimlik inşası, marka algısının güçlendirilmesi ve modern pazarlama kanallarına entegrasyon.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deneyim Bölümü -->
+    <section id="deneyim">
+        <h2 class="section-title">İş Deneyimi</h2>
+        
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" alt="Pazarlama Veri Analitiği Paneli" class="section-divider-image">
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="time-period">2022 - Günümüz</div>
+                    <h3 class="job-title">Kıdemli Pazarlama Müdürü / Yönetici</h3>
+                    <div class="company">Şirket Bilgisi / Sektör</div>
+                    <p class="job-desc">Büyüme stratejilerinin belirlenmesi, pazarlama ve reklam bütçelerinin yönetimi ve ekipler arası koordinasyonun sağlanması.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="time-period">2018 - 2022</div>
+                    <h3 class="job-title">Pazarlama ve İletişim Uzmanı</h3>
+                    <div class="company">Önceki Şirket Bilgisi</div>
+                    <p class="job-desc">Kampanya süreçlerinin uçtan uca yönetilmesi, pazar payının artırılmasına yönelik kreatif projelerin üretilmesi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim Bölümü -->
+    <section id="iletisim">
+        <div class="contact-container">
+            <h2 class="section-title">Bağlantı Kurun</h2>
+            <p class="contact-text">Projeler, danışmanlık talepleri veya sadece profesyonel ağınızı genişletmek için benimle iletişime geçebilirsiniz.</p>
+            
+            <div class="social-links">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/murat-karakal-a3997680/" target="_blank" class="social-icon linkedin" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                </a>
+                
+                <!-- WhatsApp -->
+                <a href="https://wa.me/905543215277" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+
+                <!-- Telefon -->
+                <a href="tel:+905543215277" class="social-icon phone" title="Telefon">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Telefon Et</span>
+                </a>
+
+                <!-- E-posta -->
+                <a href="mailto:m.karakal@hotmail.com" class="social-icon email" title="E-posta">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>E-posta</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Murat Karakal. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body>
+</html>
